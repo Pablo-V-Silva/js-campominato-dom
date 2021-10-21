@@ -21,61 +21,12 @@ h2 {
   display: inline;
 }
 
-button {
-  padding: 0.2rem 1rem;
-  border: 1px solid black;
-  border-radius: 3px;
-  cursor: pointer;
-  color: white;
-  margin: 0 1rem;
-}
-
-button#easy {
-  background: limegreen;
-}
-
-button#easy:hover {
-  background: rgb(25, 104, 25);
-}
-
-button#medium {
-  background: darkorange;
-}
-
-button#medium:hover {
-  background: rgb(136, 75, 0);
-}
-
-button#hard {
-  background: crimson;
-}
-
-button#hard:hover {
-  background: rgb(100, 10, 28);
-}
-
 #contain {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
   margin-bottom: 5rem;
-}
-
-.easywidth {
-  width: 1000px;
-}
-
-.easyWidth {
-  width: 1000px;
-}
-
-.mediumWidth {
-  width: 900px;
-}
-
-.hardWidth {
-  width: 700px;
 }
 
 .square {
@@ -95,4 +46,8 @@ button#hard:hover {
 
 .selected {
   background-color: limegreen;
+}
+
+.crimson {
+  background-color: crimson;
 }

@@ -14,40 +14,35 @@ const mediumBtn = document.getElementById('medium')
 /* Dichiarazione del bottone per la difficoltà difficile */
 const hardBtn = document.getElementById('hard')
 
+let nSquares;
 
-
+/* const bombs = positionBombs(nSquares); */
 
 /* Dichiarazione degli eventi che genereranno i quadratini in base al bottone che verrà premuto */
-const nSquares = 100;
 easyBtn.addEventListener('click', function () {
+  nSquares = 100;
 
   contain.className = 'easyWidth'
 
   generate(nSquares);
 
-  positionBombs(nSquares);
-
 })
 
 mediumBtn.addEventListener('click', function () {
-  const nSquares = 81;
+  nSquares = 81;
 
   contain.className = 'mediumWidth'
 
   generate(nSquares);
 
-  positionBombs(nSquares);
-
 })
 
 hardBtn.addEventListener('click', function () {
-  const nSquares = 49;
+  nSquares = 49;
 
   contain.className = 'hardWidth';
 
   generate(nSquares);
-
-  positionBombs(nSquares);
 
 })
 
@@ -77,8 +72,7 @@ function generate(quadratini) {
     /* Aggiunta dell'evento al click dei quadrati per :
     - il primo if : aggiungere la classe "selected" e rimuovere la classe originale del background
     - il secondo if : rimuovere la classe "selected" e aggiungere di nuovo la classe originale per il background */
-
-    /* square.addEventListener('click', function () {
+    square.addEventListener('click', function () {
 
       if (square.classList.contains('purple')) {
         square.classList.remove('purple');
@@ -87,44 +81,30 @@ function generate(quadratini) {
         square.classList.remove('selected');
         square.classList.add('purple');
       }
-    }) */
-
+    })
   }
-
 }
 
+/* Generazione di un numero random */
 function genRandomNumber(min, max) {
   return randomNumber = Math.floor(Math.random() * (max - min) + 1) + min;
 }
 
+/* creazione di un array con all'interno dei numeri casuali generati dalla funzione di prima */
 function positionBombs(quadratini) {
   const bombs = []
+  console.log(quadratini);
 
-  for (let i = 0; i < 16; i++) {
-    const bomb = genRandomNumber(1, quadratini) + 1;
 
-    if (bombs.includes(bomb)) {
-      i--;
-    } else {
+  while (bombs.length < 16) {
+    const bomb = genRandomNumber(1, quadratini);
+
+    /* se la bomba è inclusa nell'array decrementa l'indice per generare un altro numero */
+    if (!bombs.includes(bomb)) {
+      console.log('Add a bomb');
       bombs.push(bomb)
     }
   }
   console.log(bombs);
+  return bombs;
 }
-
-
-/* function generateBombs(quadratini) {
-  // creare un array vuota
-  const bombs = []
-  // ciclare finche la lunghezza dell'array bombs non é 16
-  while (bombs.length < 16) {
-    //console.log(bombs);
-    // genera un numero casuale tra un min e max
-    const randomNumber = genRandomNumber(1, quadratini)
-    // verifica se il numero non é giá incluso e inseriscilo tra le bombe
-    if (!bombs.includes(randomNumber)) {
-      console.log('Add a bomb');
-      bombs.push(randomNumber)
-    }
-  }
-} */
