@@ -18,12 +18,14 @@ const hardBtn = document.getElementById('hard')
 
 
 /* Dichiarazione degli eventi che genereranno i quadratini in base al bottone che verrà premuto */
+const nSquares = 100;
 easyBtn.addEventListener('click', function () {
-  const nSquares = 100;
 
   contain.className = 'easyWidth'
 
   generate(nSquares);
+
+  positionBombs(nSquares);
 
 })
 
@@ -34,6 +36,8 @@ mediumBtn.addEventListener('click', function () {
 
   generate(nSquares);
 
+  positionBombs(nSquares);
+
 })
 
 hardBtn.addEventListener('click', function () {
@@ -42,6 +46,8 @@ hardBtn.addEventListener('click', function () {
   contain.className = 'hardWidth';
 
   generate(nSquares);
+
+  positionBombs(nSquares);
 
 })
 
@@ -83,24 +89,29 @@ function generate(quadratini) {
       }
     }) */
 
-    const bombs = genRandomNumber(1, quadratini)
-
-    console.log(bombs);
-
   }
+
 }
 
 function genRandomNumber(min, max) {
-  const bombsList = []
-  console.log(bombsList);
-
-  while (bombsList.length < 16) {
-    const randomNumber = Math.floor(Math.random() * (max - min) + 1) + min;
-    bombsList.push(randomNumber)
-    console.log(randomNumber);
-  }
-  //return
+  return randomNumber = Math.floor(Math.random() * (max - min) + 1) + min;
 }
+
+function positionBombs(quadratini) {
+  const bombs = []
+
+  for (let i = 0; i < 16; i++) {
+    const bomb = genRandomNumber(1, quadratini) + 1;
+
+    if (bombs.includes(bomb)) {
+      i--;
+    } else {
+      bombs.push(bomb)
+    }
+  }
+  console.log(bombs);
+}
+
 
 /* function generateBombs(quadratini) {
   // creare un array vuota
