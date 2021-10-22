@@ -4,11 +4,14 @@ const contain = document.getElementById('contain');
 // Dichiarazione del container per il game over
 const gameOver = document.getElementById('loseContain');
 
+// Dichiarazione del container per la win
+const winGame = document.getElementById('winContain');
+
 // Dichiarazione della difficoltà
-const difficulty = document.getElementById('difficulty')
+const difficulty = document.getElementById('difficulty');
 
 // Dichiarazione del bottone che Inizierà la partita
-const playBtn = document.getElementById('play')
+const playBtn = document.getElementById('play');
 
 // Dichiarazione dei blocchi in base alla scelta dell'utente
 let nSquares;
@@ -58,6 +61,9 @@ function gridLayout(blocksNumbers) {
   let bombs = genBombs(nSquares);
   console.log(bombs);
 
+  const winCounter = safeSquares(blocksNumbers, bombs.length)
+  console.log(winCounter);
+
   for (let n = 1; n <= blocksNumbers; n++) {
     const blockEl = document.createElement('div');
     blockEl.classList.add('square', 'purple');
@@ -68,6 +74,7 @@ function gridLayout(blocksNumbers) {
       const keySelected = Number(blockEl.innerText);
 
       const keyBomb = isBomb(bombs, keySelected);
+
 
       if (keyBomb) {
         /* blockEl.classList.remove('purple')
@@ -92,6 +99,7 @@ function gridLayout(blocksNumbers) {
         blockEl.classList.remove('purple')
         blockEl.classList.add('selected')
       }
+
     })
   }
 
@@ -125,3 +133,28 @@ function isBomb(bombs, diValue) {
     return false;
   }
 }
+
+function safeSquares(blocksNumbers, nBombs) {
+  return safe = blocksNumbers - nBombs;
+}
+
+
+
+
+/* blocco in caso di vincita {
+        // Win del gioco
+        // svuotare la griglia
+        contain.innerHTML = ""
+
+        // creare un contenitore dove mettere la scritta che enuncia la sconfitta e aggiungo lo stile al contenitore
+        const winContainer = document.createElement('div');
+        winContainer.classList.add('loseContainer');
+
+        // Inserisco nell'HTML il mio contenitore che enuncia la sconfitta
+        winGame.append(winContainer)
+
+        // La scritta effettiva che ti dice che hai perso
+        winContainer.innerHTML = `
+        <h1>You complete the <span class="winText">Game!</span></h1>
+        `
+      } */
