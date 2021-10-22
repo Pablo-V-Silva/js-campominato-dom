@@ -1,6 +1,9 @@
 // Dichiarazione del container dove verrà generato il gioco
 const contain = document.getElementById('contain');
 
+// Dichiarazione del container per il game over
+const gameOver = document.getElementById('loseContain');
+
 // Dichiarazione della difficoltà
 const difficulty = document.getElementById('difficulty')
 
@@ -49,6 +52,7 @@ function gridDifficulty(optionSelected) {
 // Funzione che genera effettivamente la griglia di gioco
 function gridLayout(blocksNumbers) {
   contain.innerHTML = ''
+  gameOver.innerHTML = ''
 
   // Generazione randomica della posizione delle bombe
   let bombs = genBombs(nSquares);
@@ -66,8 +70,16 @@ function gridLayout(blocksNumbers) {
       const keyBomb = isBomb(bombs, keySelected);
 
       if (keyBomb) {
-        blockEl.classList.remove('purple')
-        blockEl.classList.add('crimson')
+        /* blockEl.classList.remove('purple')
+        blockEl.classList.add('crimson') */
+        contain.innerHTML = ""
+        const loseContainer = document.createElement('div');
+        loseContainer.classList.add('loseContainer');
+        gameOver.append(loseContainer)
+
+        loseContainer.innerHTML = `
+        <h1>You hitted a <span>Bomb</span>! Try again! <span>Click</span> again on button for <span>Start</span> new Game</h1>
+        `
       } else {
         blockEl.classList.remove('purple')
         blockEl.classList.add('selected')

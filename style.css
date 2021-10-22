@@ -51,3 +51,17 @@ h2 {
 .crimson {
   background-color: crimson;
 }
+
+.loseContainer {
+  width: 80%;
+  height: calc(100vh - 80px);
+  font-size: 2rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+span {
+  color: crimson;
+}
