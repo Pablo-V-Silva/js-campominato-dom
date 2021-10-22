@@ -72,15 +72,23 @@ function gridLayout(blocksNumbers) {
       if (keyBomb) {
         /* blockEl.classList.remove('purple')
         blockEl.classList.add('crimson') */
+
+        //Game over del gioco
+        //svuotare la griglia
         contain.innerHTML = ""
+
+        //creare un contenitore dove mettere la scritta che enuncia la sconfitta e aggiungo lo stile al contenitore
         const loseContainer = document.createElement('div');
         loseContainer.classList.add('loseContainer');
+
+        // Inserisco nell'HTML il mio contenitore che enuncia la sconfitta 
         gameOver.append(loseContainer)
 
+        // La scritta effettiva che ti dice che hai perso
         loseContainer.innerHTML = `
         <h1>You hitted a <span>Bomb</span>! Try again! <span>Click</span> again on button for <span>Start</span> new Game</h1>
         `
-      } else {
+      } else { // Se clicchi i quadrati senza le bombe, il quadratino diventa verde tramite la classe "selected"
         blockEl.classList.remove('purple')
         blockEl.classList.add('selected')
       }
